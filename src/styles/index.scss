@@ -1,0 +1,52 @@
+// Настройки
+@use "_config/variables" as *;
+
+// Миксины
+@use "_mixins/container" as *;
+@use "_mixins/flex" as *;
+@use "_mixins/reset" as *;
+
+// Компоненты
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  @include reset-model();
+}
+
+button {
+  @include reset-button();
+}
+
+input,
+button,
+textarea,
+select {
+  outline: none;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.container {
+  @include container();
+}
+
+html,
+body {
+  @include reset-model();
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  background-color: $white;
+}
