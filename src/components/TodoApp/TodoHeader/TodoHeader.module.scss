@@ -1,0 +1,9 @@
+@use "../../../styles/utils" as *;
+
+.input {
+  box-shadow: $bottom-shadow;
+  input {
+    font-size: var(--font-main);
+    padding: 10px 15px 15px 60px;
+  }
+}

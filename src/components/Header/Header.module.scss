@@ -1,0 +1,13 @@
+@use "../../styles/utils" as *;
+
+.header {
+  @include flex-center();
+  width: 100%;
+  min-height: 110px;
+  background: #764abc;
+}
+
+.title {
+  color: white;
+  text-align: center;
+}

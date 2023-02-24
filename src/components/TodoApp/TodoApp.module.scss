@@ -1,0 +1,21 @@
+@use "../../styles/utils" as *;
+
+.todoApp {
+  display: flex;
+  flex-direction: column;
+  width: 850px;
+  text-align: left;
+  padding: 10px;
+}
+
+@media screen and (max-width: $bpMedium) {
+  .todoApp {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $bpSmall) {
+  .todoApp {
+    width: $minWidth - 10px;
+  }
+}

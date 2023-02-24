@@ -1,0 +1,52 @@
+@use "../../../styles/utils" as *;
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  column-gap: 15px;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 15px;
+  padding-top: 10px;
+  box-shadow: 0 -2px 0 rgb(0 0 0 / 30%);
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.titleFilter {
+  margin-bottom: 10px;
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  .btnAction {
+    width: 205px;
+    padding: 6px 5px
+  }
+}
+
+.colorLabel {
+  display: flex;
+  align-items: center;
+  .colorText {
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: $bpMedium) {
+  .footer {
+    row-gap: 30px;
+  }
+}
+
+@media screen and (max-width: $bpSmall) {
+  .footer {
+    justify-content: center;
+    row-gap: 25px;
+  }
+}

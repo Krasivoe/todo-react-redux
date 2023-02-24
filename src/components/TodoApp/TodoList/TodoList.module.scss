@@ -1,0 +1,65 @@
+@use "../../../styles/utils" as *;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  padding-bottom: 20px;
+  overflow-y: auto;
+}
+
+.listItem {
+  display: flex;
+  column-gap: 10px;
+  font-size: var(--font-main);
+  padding: 10px 0;
+  box-shadow: $bottom-shadow;
+}
+
+.label,
+.buttons {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.label {
+  flex-grow: 1;
+  .checkbox {
+    padding: 8px 14px 8px 8px;
+  }
+
+  .text {
+    color: black;
+    line-height: 1.3;
+    transition: opacity 0.1s linear;
+    &.completed {
+      opacity: 0.4;
+    }
+  }
+}
+
+.buttons {
+  justify-content: flex-end;
+  .select {
+    width: 100px;
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: $bpSmall) {
+  .listItem {
+    flex-direction: column;
+    .checkbox {
+      padding: 8px;
+    }
+  }
+
+  .buttons {
+    justify-content: flex-start;
+    .select {
+      width: 100%;
+      margin-right: 10px;
+    }
+  }
+}

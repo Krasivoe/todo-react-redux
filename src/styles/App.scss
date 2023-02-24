@@ -1,14 +1,44 @@
+@use "../styles/utils" as *;
+
+:root {
+  --font-h1: 3rem;
+  --font-h2: 2.5rem;
+  --font-main: 1.5rem;
+}
+
 .App {
-  min-width: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: $minWidth;
   min-height: 100vh;
   height: 100%;
   margin: 0 auto;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: var(--font-h1);
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: var(--font-h2);
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: $bpMedium) {
+  :root {
+    --font-h1: 2.5rem;
+    --font-h2: 2rem;
+    --font-main: 1.25rem;
+  }
+}
+
+@media screen and (max-width: $bpSmall) {
+  :root {
+    --font-h1: 2.125rem;
+    --font-main: 1.125rem;
+  }
 }
