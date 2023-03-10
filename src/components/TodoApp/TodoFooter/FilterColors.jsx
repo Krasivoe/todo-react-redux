@@ -1,44 +1,33 @@
+import React from 'react';
 import styles from './TodoFooter.module.scss';
 import { Checkbox } from '@mui/material';
+import { availableColors, getRusColor } from '../../../utils/colors.js';
 
-const FilterColors = () => {
+const FilterColors = React.memo(({ colors, onColorChange }) => {
+  const renderedColors = availableColors.map(color => {
+    const checked = colors.includes(color);
+
+    const handleChange = () => {
+      const changeType = checked ? 'remove' : 'add';
+      onColorChange(color, changeType);
+    };
+
+    return (
+      <label className={styles.colorLabel} key={color}>
+        <Checkbox sx={{ p: '5px' }} checked={checked} onChange={handleChange} />
+        <span className={styles.colorText} style={{ color }}>
+          {getRusColor(color)}
+        </span>
+      </label>
+    );
+  });
+
   return (
     <div>
       <h5 className={styles.titleFilter}>Сортировка по цвету</h5>
-      <form>
-        <label className={styles.colorLabel}>
-          <Checkbox sx={{ p: '5px' }} />
-          <span className={styles.colorText} style={{ color: 'green' }}>
-            Зеленый
-          </span>
-        </label>
-        <label className={styles.colorLabel}>
-          <Checkbox sx={{ p: '5px' }} />
-          <span className={styles.colorText} style={{ color: 'green' }}>
-            Зеленый
-          </span>
-        </label>
-        <label className={styles.colorLabel}>
-          <Checkbox sx={{ p: '5px' }} />
-          <span className={styles.colorText} style={{ color: 'green' }}>
-            Зеленый
-          </span>
-        </label>
-        <label className={styles.colorLabel}>
-          <Checkbox sx={{ p: '5px' }} />
-          <span className={styles.colorText} style={{ color: 'green' }}>
-            Зеленый
-          </span>
-        </label>
-        <label className={styles.colorLabel}>
-          <Checkbox sx={{ p: '5px' }} />
-          <span className={styles.colorText} style={{ color: 'green' }}>
-            Фиолетовый
-          </span>
-        </label>
-      </form>
+      <form>{renderedColors}</form>
     </div>
   );
-};
+});
 
 export default FilterColors;

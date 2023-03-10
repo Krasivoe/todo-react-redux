@@ -1,16 +1,31 @@
 import styles from './TodoHeader.module.scss';
 import { Input } from '@mui/material';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { actionAdd } from '../../../store/todosReducer.js';
 
 const TodoHeader = () => {
-  const [todoValue, setTodoValue] = useState('');
+  const [text, setText] = useState('');
+  const dispatch = useDispatch();
+
+  const handleChange = e => setText(e.target.value);
+
+  const handleKeyDown = e => {
+    const trimmedText = text.trim();
+
+    if (e.key === 'Enter' && trimmedText) {
+      dispatch(actionAdd(text));
+      setText('');
+    }
+  };
 
   return (
     <header>
       <Input
         className={styles.input}
-        value={todoValue}
-        onChange={e => setTodoValue(e.target.value)}
+        value={text}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
         fullWidth
         disableUnderline={true}
         placeholder="Что нужно сделать?"
