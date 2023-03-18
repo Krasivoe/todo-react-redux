@@ -8,12 +8,8 @@ import { availableColors, getRusColor } from '../../../utils/colors.js';
 import { capitalize } from '../../../utils/index.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useWindowSize } from '../../../hooks/useWindowSize.js';
-import {
-  actionChangeColor,
-  actionChangeCompleted,
-  actionDelete,
-  selectTodoById
-} from '../../../store/todosReducer.js';
+import { selectTodoById } from '../../../store/selectors.js';
+import { changeTodoColor, changeTodoCompleted, removeTodo } from '../../../store/todosSlice.js';
 
 const TodoListItem = React.memo(({ todoId }) => {
   const todo = useSelector(state => selectTodoById(state, todoId));
@@ -22,16 +18,16 @@ const TodoListItem = React.memo(({ todoId }) => {
   const windowSize = useWindowSize();
 
   const handleCompletedChanged = () => {
-    dispatch(actionChangeCompleted(todo.id));
+    dispatch(changeTodoCompleted(todo.id));
   };
 
   const handleColorChanged = e => {
     const color = e.target.value;
-    dispatch(actionChangeColor(todo.id, color));
+    dispatch(changeTodoColor(todo.id, color));
   };
 
   const handleDeleteTodo = () => {
-    dispatch(actionDelete(todo.id));
+    dispatch(removeTodo(todo.id));
   };
 
   const selectColors = (
@@ -73,7 +69,8 @@ const TodoListItem = React.memo(({ todoId }) => {
       </div>
 
       <div className={styles.buttons}>
-        {windowSize.width > 500 ? (
+        {/*windowSize.width === 0 для того, чтобы при скрытии элемента перестановка не выполнялась*/}
+        {windowSize.width > 500 || windowSize.width === 0 ? (
           <>
             {selectColors}
             {deleteIcon}

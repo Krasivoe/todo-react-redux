@@ -3,13 +3,12 @@ import ActionButtons from './ActionButtons.jsx';
 import FilterStatus from './FilterStatus.jsx';
 import FilterColors from './FilterColors.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionClearCompleted, actionSetCompleted } from '../../../store/todosReducer.js';
-import { actionSetColor, actionSetStatus } from '../../../store/filtersReducer.js';
+import { clearCompletedTodos, setTodosCompleted } from '../../../store/todosSlice.js';
+import { changeColor, changeStatus } from '../../../store/filtersSlice.js';
 import { correctSuffix } from '../../../utils/index.js';
 import { useCallback } from 'react';
 
 const TodoFooter = () => {
-  // Потестить оптимизацию тут и на вложенных компонентах
   const todosRemaining = useSelector(state => {
     const unCompletedTodos = state.todos.todos.filter(todo => !todo.completed);
     return unCompletedTodos.length;
@@ -18,18 +17,18 @@ const TodoFooter = () => {
   const { status, colors } = useSelector(state => state.filters);
   const dispatch = useDispatch();
 
-  const onSetCompletedClick = useCallback(() => dispatch(actionSetCompleted()), [dispatch]);
+  const onSetCompletedClick = useCallback(() => dispatch(setTodosCompleted()), [dispatch]);
 
-  const onClearCompletedClick = useCallback(() => dispatch(actionClearCompleted()), [dispatch]);
+  const onClearCompletedClick = useCallback(() => dispatch(clearCompletedTodos()), [dispatch]);
 
   const onStatusChange = useCallback(
-    event => dispatch(actionSetStatus(event.target.value)),
+    event => dispatch(changeStatus(event.target.value)),
     [dispatch]
   );
 
   const onColorChange = useCallback(
     (color, changeType) => {
-      dispatch(actionSetColor(color, changeType));
+      dispatch(changeColor(color, changeType));
     },
     [dispatch]
   );

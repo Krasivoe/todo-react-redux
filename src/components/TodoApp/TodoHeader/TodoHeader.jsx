@@ -2,7 +2,7 @@ import styles from './TodoHeader.module.scss';
 import { Input } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { actionAdd } from '../../../store/todosReducer.js';
+import { addTodo } from '../../../store/todosSlice.js';
 
 const TodoHeader = () => {
   const [text, setText] = useState('');
@@ -14,7 +14,7 @@ const TodoHeader = () => {
     const trimmedText = text.trim();
 
     if (e.key === 'Enter' && trimmedText) {
-      dispatch(actionAdd(text));
+      dispatch(addTodo(trimmedText));
       setText('');
     }
   };

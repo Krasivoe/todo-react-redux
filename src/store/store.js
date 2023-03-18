@@ -1,6 +1,6 @@
-import { createStore } from 'redux';
-import rootReducer from './reducer.js';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
+import todosSlice from './todosSlice.js';
+import filtersSlice from './filtersSlice.js';
 
 const saveToLocaleStorage = state => {
   try {
@@ -11,7 +11,12 @@ const saveToLocaleStorage = state => {
   }
 };
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = configureStore({
+  reducer: {
+    todos: todosSlice,
+    filters: filtersSlice
+  }
+});
 
 store.subscribe(() => saveToLocaleStorage(store.getState()));
 

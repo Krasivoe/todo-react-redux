@@ -1,7 +1,7 @@
 import styles from './TodoList.module.scss';
 import TodoListItem from './TodoListItem.jsx';
 import { useSelector } from 'react-redux';
-import { selectFilteredTodoIds } from '../../../store/todosReducer.js';
+import { selectFilteredTodoIds } from '../../../store/selectors.js';
 
 const TodoList = () => {
   const todoIds = useSelector(selectFilteredTodoIds);
