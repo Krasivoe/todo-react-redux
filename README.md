@@ -1,20 +1,60 @@
-# React Start
+# Список задач React + Redux/Redux Toolkit
 
-## Install
+
+**О проекте:**<br>
+Приложения список задач, созданное в качестве учебного пособия по Redux и Redux Toolkit.<br>
+
+
+**Функционал:**<br>
+Приложение состоит из списка задач и панели упаравления.<br>
+
+В списке задач можно пометить определенную задачу как выполненную, 
+для этого необходимо нажать на иконку флажка слева. 
+Для удаления задачи, необходимо нажать на иконку удаления справа.<br>
+Так же для каждой задачи можно установить ее цвет. Цвет выбирается
+в соответствующем списке у каждой задачи.
+<br><br>
+В панели управления есть возможность пометить все задачи как завершенные 
+или удалить все выполненные задачи. Так же в панели управления доступны два 
+режима фильтрации задач: по статусу и по цвету. Режимы сортировки можно комбинировать.
+
+**Используемый стек:**
+* React
+* Redux / Redux Toolkit
+* Scss
+* Material UI
+
+
+## Изображения
+
+### Начальный экран
+<img src='./images/StartPage.jpg' alt="Начальный экран">
+
+### Выбор цвета для задачи
+<img src='./images/ChooseColor.jpg' alt="Выбор цвета">
+
+### Фильтрация по статусу
+<img src='./images/FilteredByStatus.jpg' alt="Фильтрация по статусу">
+
+### Фильтрация по цвету
+<img src='./images/FilteredByColor.jpg' alt="Фильтрация по цвету">
+
+
+## Установка
 
 ```bash
-git clone https://github.com/Krasivoe/react-start.git
-cd quiz-react
+git clone https://github.com/Krasivoe/todo-react-redux.git
+cd todo-react-redux
 npm install
 ```
 
-## Compiles and hot-reloads for development
+## Сборка development
 
 ```bash
 npm start
 ```
 
-## Compiles and minifies for production
+## Сборка production
 
 ```bash
 npm run build
